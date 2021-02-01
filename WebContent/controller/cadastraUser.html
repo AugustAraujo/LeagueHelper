@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-type"
+	content="application/xhtml+xml; charset=UTF-8">
+<title>Cadastro</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<style>
+.fourth {
+	border-color: white;
+	color: #fff;
+	background-image: -webkit-linear-gradient(45deg, #015575 50%, transparent 50%);
+	background-image: linear-gradient(45deg, #015575 50%, transparent 50%);
+	background-position: 100%;
+	background-size: 400%;
+	-webkit-transition: background 200ms ease-in-out;
+	transition: background 100ms ease-in-out;
+}
+.fourth:hover {
+	background-position: 0;
+}
+
+#botao, #voltar {
+	color: black;
+}
+
+#botao:hover, #voltar:hover {
+	color: white;
+	font-weight: bold;
+}
+</style>
+</head>
+<body style="background-color: #181a1b">
+	<div class="card w-25 mx-auto"
+		style="display: flex; justify-content: center; margin-top: 12.5%; background-image: linear-gradient(to bottom, #015575, #11BFB6); border-color: rgb(72, 116, 57); border-radius: 8px;">
+
+		<h5 class="card-header info-color text-white text-center py-4">
+			<strong>Cadastre-se</strong>
+		</h5>
+
+		<div class="card-body px-lg-5 pt-4">
+
+			<form class="text-center" style="color: #757575;" method="POST"
+				id="frmCadastro">
+
+				<div class="md-form">
+					<label for="materialLoginFormPassword" style="color: white;">Email</label>
+					<input type="email" id="user" name="user"
+						class="form-control text-center">
+				</div>
+
+				<div class="md-form mt-1">
+					<label for="materialLoginFormPassword" style="color: white;">Nome</label>
+					<input type="text" id="nome" name="nome"
+						class="form-control text-center">
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<input type="button" id="botao"
+							class="btn fourth btn-outline-success btn-rounded btn-block my-4 waves-effect z-depth-0"
+							class="btn btn-primary" value="Enviar" style="color:white;">
+					</div>
+					<div class="col">
+						<input type="button" id="voltar"
+							class="btn fourth btn-outline-success btn-rounded btn-block my-4 waves-effect z-depth-0"
+							class="btn btn-primary" value="Voltar" style="color:white;">
+					</div>
+				</div>
+				
+			</form>
+			<div id="msgLogin" class="text-center text-danger"></div>
+			<script type="text/javascript">
+			
+				$(document).ready(
+					function() { 
+						$("#botao").click(
+							function() {
+								var formData = $("#frmCadastro").serialize();
+								$.post("../model/enviarEmail.jsp",formData,function(data,status) {},'json');
+								alert("Cadastro realizado com sucesso!");
+								window.location.href = "../index.jsp";
+							}
+						);
+						$('#voltar').click(
+							function() {
+								window.location.href = "../index.jsp";
+							}
+						);
+					}
+				);
+			</script>
+
+
+		</div>
+	</div>
+</body>
+</html>
